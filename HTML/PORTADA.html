@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candié Jerez</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Slab Serif;
+            background-color: #f4f4f9;
+            overflow-x: hidden;
+        }
+
+        /*ESTILOS DE LA PORTADA DESLIZABLE*/
+        .portada-pantalla {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #72401e 0%, #9c7727 100%);
+            color: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            padding: 20px;
+            /* Transición suave para el movimiento hacia arriba */
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        /* Clase que activa la animación (se añade con JavaScript) */
+        .portada-pantalla.subir {
+            transform: translateY(-100vh);
+        }
+
+        .portada-contenido h1 {
+            font-size: 3.5rem;
+            margin-bottom: 5px;
+        }
+
+        .portada-contenido p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .indicador-clic {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: parpadeo 1.5s infinite;
+        }
+
+        @keyframes parpadeo {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* 2. ESTILOS DEL CONTENIDO PRINCIPAL (La página de abajo) */
+        .pagina-principal {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .pagina-principal h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .pagina-principal p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PORTADA (Se oculta al hacer clic) -->
+    <div class="portada-pantalla" id="miPortada">
+        <div class="portada-contenido">
+            <h1>Candié Jerez</h1>
+            <p>Obrador con alma</p>
+            <div class="indicador-clic">Haz clic en cualquier lugar para entrar</div>
+        </div>
+    </div>
+
+    
+
+    <!-- SCRIPT PARA EL EFECTO DE SUBIDA -->
+    <script>
+        const portada = document.getElementById('miPortada');
+
+        portada.addEventListener('click', () => {
+            // Añade la clase CSS que mueve la pantalla hacia arriba
+            portada.classList.add('subir');
+            
+            // Opcional: Elimina la portada del código después de la animación para que no estorbe
+            setTimeout(() => {
+                portada.style.display = 'none';
+            }, 800); // 800ms coincide con el tiempo de la transición CSS
+        });
+    </script>
+
+</body>
+</html>
