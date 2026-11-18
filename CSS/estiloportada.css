@@ -1,0 +1,85 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div{
+            border: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Slab Serif;
+            background-color: #f4f4f9;
+            overflow-x: hidden;
+        }
+        h1{
+            justify-content: center;
+            justify-self: unset;
+            border: #333;
+            color: #753403;
+        }
+        /*ESTILOS DE LA PORTADA DESLIZABLE*/
+        .portada-pantalla {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #753403, #9c7727 100%);
+            color: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            padding: 20px;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+       
+        .portada-pantalla.subir {
+            transform: translateY(-100vh);
+        }
+        
+        .portada-contenido h1 {
+            font-size: 3.5rem;
+            margin-bottom: 5px;
+        }
+
+        .portada-contenido p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .indicador-clic {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: parpadeo 1.5s infinite;
+        }
+
+        @keyframes parpadeo {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* 2. ESTILOS DEL CONTENIDO PRINCIPAL (La página de abajo) */
+        .pagina-principal {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .pagina-principal h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .pagina-principal p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+ 
