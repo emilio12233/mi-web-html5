@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <link rel="stylesheet" href="../CSS/estiloportada.css">
+    <link rel="script" href="../js/pdf.js">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Candié Jerez</title>
@@ -39,71 +40,5 @@
 
     </footer>    
     </main>
-    
-    
-
-    
-
-    <!-- SCRIPT PARA EL EFECTO DE SUBIDA -->
-    <script>
-        //constante nombre portada = documento html.busca un elemento por id (nombre de el div padre)
-        const portada = document.getElementById('miPortada');
-        //Detecta el click                funcion flecha.contiene las instrucciones que se van a ejecutar.
-        portada.addEventListener('click', () => {
-            //Añade la clase CSS que mueve la pantalla hacia arriba
-            portada.classList.add('subir');
-            
-            //Elimina la portada del código después de la animación para que no estorbe, lo busque por internet.
-            setTimeout(() => {
-                portada.style.display = 'none';
-            }, 800); // 800ms coincide con el tiempo de la transición CSS
-        });
-    </script>
-    <!--SCRIPT PARA QUITAR EL VISOR PDF PREDETERMINADO LA HERRAMIENTA ES PDF.js LO SAQUE DE GITHUB-->
-    <script type="module">
-
-        import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.149/build/pdf.mjs';
-
-        // Configurar el worker
-        pdfjsLib.GlobalWorkerOptions.workerSrc =
-            'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.149/build/pdf.worker.mjs';
-
-        // Ruta del documento
-        const url = '../IMG/Carta Candie.pdf';
-
-        // Cargar PDF
-        const pdf = await pdfjsLib.getDocument(url).promise;
-
-        // Contenedor
-        const contenedor = document.getElementById('pdf-container');
-
-        // Recorrer todas las páginas
-        for (let numero = 1; numero <= pdf.numPages; numero++) {
-
-            const pagina = await pdf.getPage(numero);
-
-            // Escala de visualización
-            const escala = 1;
-            const viewport = pagina.getViewport({ scale: escala });
-
-            // Crear canvas
-            const canvas = document.createElement('canvas');
-            const contexto = canvas.getContext('2d');
-
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-
-            // Añadir página al HTML
-            contenedor.appendChild(canvas);
-
-            // Dibujar PDF
-            await pagina.render({
-                canvasContext: contexto,
-                viewport: viewport
-            }).promise;
-        }
-
-    </script>
-
 </body>
 </html>
